@@ -19,6 +19,7 @@ public class RegistrationService {
 
     @Transactional
     public UserRecord createUserWithAccount(String name) {
+        String userName = name;
         UserRecord user = userDataGateway.create(name);
         accountDataGateway.create(user.id, String.format("%s's account", name));
         return user;
